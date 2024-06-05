@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Menu Item</title>
+</head>
+<body>
+    <h1>Add Menu Item for {{ category.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="add">Add Another Category</button>
+        <button type="submit" name="add_another">Add Another Menu Item</button>
+        <button type="submit" name="submit">Get the MenuList</button>
+
+    </form>
+</body>
+</html>
