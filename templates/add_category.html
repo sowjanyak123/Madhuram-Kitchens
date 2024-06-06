@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Category</title>
-</head>
-<body>
-    <h1>Add Category</h1>
-    <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Category</button>
-            <button type="submit" name="add_another_category">Add Another Category</button>
-        </form>
-    </form>
-</body>
-</html>
+<!-- add_category.html -->
+<h2>Add Category</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="add">Add Category</button>
+    <button type="submit" name="add_another_category">Add Another Category</button>
+    <button type="submit" name="fetch">getmenu items</button>
+    
+
+</form>

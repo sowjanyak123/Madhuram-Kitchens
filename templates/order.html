@@ -1,0 +1,23 @@
+<!-- order.html -->
+<h2>Place an Order</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Place Order</button>
+</form>
+
+<h2>Menu Items</h2>
+<ul>
+    {% for item in menu_items %}
+    <li>
+        {{ item.title }} - ${{ item.price }}
+        <form method="post" action="{% url 'add_order_item' %}">
+            {% csrf_token %}
+            <input type="hidden" name="order_id" value="{{ form.instance.id }}">
+            <input type="hidden" name="menu_item_id" value="{{ item.id }}">
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <button type="submit">Order</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>

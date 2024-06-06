@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category, MenuItem
+from .models import Category, MenuItem, Order
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -7,7 +7,11 @@ class CategoryForm(forms.ModelForm):
         fields = ['name', 'description', 'image']
 
 class MenuItemForm(forms.ModelForm):
-    category =forms.ModelChoiceField(queryset=Category.objects.all())
     class Meta:
         model = MenuItem
         fields = ['title', 'description', 'price', 'category']
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['customer_name']
