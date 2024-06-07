@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering Service</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar,
+        .footer {
+            background-color: #ff6600;
+        }
+
+
+        .navbar-brand,
+        .nav-link,
+        .footer p {
+            color: white !important;
+        }
+
+        .hero-section {
+            background: url("C:\\Users\\sowja\\Documents\\Madhuram kitchen\\aritaku.png") no-repeat center center/cover;
+            height: 100vh;
+            color: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .about-us,
+        .services,
+        .menu,
+        .testimonials,
+        .call-to-action {
+            padding: 60px 0;
+        }
+
+        .orange-text {
+            color: #ff6600;
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background-color: #cc5200;
+            color: white;
+        }
+
+        .menu-section {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            border: 1px solid #ff6600;
+            border-radius: 10px;
+            background-color: #ffcc99;
+            padding: 20px;
+        }
+
+        .menu-section h2 {
+            background-color: #ff6600;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .dish {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ff6600;
+        }
+
+        .dish img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .dish-details {
+            flex-grow: 1;
+        }
+
+        .dish-details h3 {
+            margin: 0 0 10px 0;
+            color: #ff6600;
+            font-size: 20px;
+        }
+
+        .dish-details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .dish-details .price {
+            font-weight: bold;
+            display: inline;
+            margin-left: 24px;
+        }
+
+        .dish input[type="checkbox"] {
+            margin-left: 20px;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .highlighted {
+            border: 2px solid #ff6600;
+            padding: 3px;
+            border-radius: 10px;
+        }
+
+        #menu a {
+            text-decoration: none;
+            color: #343a40;
+        }
+
+        .menu-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: left;
+            color: #ff6600;
+            font-size: large;
+        }
+
+        .dessert-item {
+            display: flex;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        .dessert-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .details {
+            flex: 1;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            color: #ff6600;
+            font-size: large;
+        }
+
+        p {
+            margin: 5px 0;
+            color: #000000;
+            font-size: small;
+        }
+
+        .select-btn,
+        .submit-btn {
+            padding: 1px 1px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .select-btn:hover,
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .selected {
+            background-color: #28a745 !important;
+        }
+
+        .name-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .name-price h3 {
+            margin: 0;
+            color: #ff7043;
+            font-weight: bold;
+        }
+
+        .dotted-line {
+            flex-grow: 1;
+            border-bottom: 2px dotted #ff7043;
+            margin: 0 10px;
+            transform: translateY(50%);
+        }
+
+        .price-button {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .price {
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="position: fixed;width: 100%; z-index: 1;">
+        <a class="navbar-brand" href="#">Catering Service</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Signup/Login">Signup/Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4">Madhuram Kitchens</h1>
+            <p class="lead">Making your events unforgettable</p>
+            <a href="#contact" class="btn btn-orange btn-lg">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- About Us -->
+    <section id="about-us" class="about-us">
+        <div class="container text-center">
+            <h2 class="orange-text">About Us</h2>
+            <p>We provide top-notch catering services for all occasions. Our team is dedicated to making your event
+                memorable with our delicious food and impeccable service.</p>
+        </div>
+    </section>
+
+    <!-- Services Offered -->
+    <section id="services" class="services bg-light">
+        <div class="container text-center">
+            <h2 class="orange-text">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Weddings</h4>
+                    <p>Elegant and delicious catering for your special day.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Corporate Events</h4>
+                    <p>Professional and reliable catering for business events.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Private Parties</h4>
+                    <p>Perfect food for your private gatherings and celebrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Menu -->
+    <section id="menu" class="menu">
+        <div class="container text-center">
+            <h2 class="orange-text">Featured Menu</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="C:\Users\sowja\Documents\Madhuram kitchen\Screenshot apitizer 2024-06-04 124313.png"
+                        class="img-fluid" alt="Appetizer">
+                    <a href="#appetizer">
+                        <h4>Appetizer</h4>
+                    </a>
+                    <p>Delicious starters to begin your meal.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="C:\Users\sowja\Documents\Madhuram kitchen\Screenshot mc1 2024-06-04 143101.png"
+                        class="img-fluid" alt="Main Course">
+                    <a href="#maincourse">
+                        <h4>Main Course</h4>
+                    </a>
+                    <p>Hearty and fulfilling main courses.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="C:\Users\sowja\Documents\Madhuram kitchen\Screenshotdess1 2024-06-04 143829.png"
+                        class="img-fluid" alt="Dessert">
+                    <a href="#Dessert">
+                        <h4>Dessert</h4>
+                    </a>
+                    <p>Sweet treats to end your meal on a high note.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Course -->
+    <section id="maincourse">
+        <div class="menu-section">
+            <h2>Main Course</h2>
+            <form action="/submit-menu" method="post">
+                <div class="row">
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;"
+                                onclick="highlightDiv(this)" />
+                            <h3 style="display: inline;">Kodi Iguru</h3>
+                            <div class="price">&#x20B9;420</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\OneDrive\Pictures\Screenshots\kodiiguru.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Chicken curry with gravy to mix and savour with white ruce, Chapati, Roti,
+                                            Biriyani, Bagara
+                                            and
+                                            many more ...
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="salmon" name="dishes" value="salmon" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Kodikura Chintachiguru</h3>
+                            <div class="price">&#x20B9;250</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\OneDrive\Pictures\Screenshots\chintachiguru.png"
+                                            alt="Baked Salmon">
+                                    </td>
+                                    <td>
+                                        <p>Authentic andhra telugu chicken recipe.</p>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;"
+                                onclick="highlightDiv(this)" />
+                            <h3 style="display: inline;">Fish Pulusu</h3>
+                            <div class="price">&#x20B9;300</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\OneDrive\Pictures\Screenshots\Screenshot 2024-06-03 183620.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>This Andhra style Fish Pulusu is stewed fish with tamarind and spices. It is
+                                            tangy, saucy, spicy and slightly hot. Serve it over rice or with ...
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;"
+                                onclick="highlightDiv(this)" />
+                            <h3 style="display: inline;">Prawns Fry</h3>
+                            <div class="price">&#x20B9;489</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\OneDrive\Pictures\Screenshots\Prawnsfry.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Prawns fry is a dish of stir fried shrimp with onions, spices and herbs. It
+                                            is
+                                            super quick to make under 20 mins and tastes delicious.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;"
+                                onclick="highlightDiv(this)" />
+                            <h3 style="display: inline;">Authentic chicken biryani</h3>
+                            <div class="price">&#x20B9;489</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\OneDrive\Pictures\Screenshots\Screenshot 2024-06-04 115755.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Andhra Chicken Biryani is a simple, quick and delicious one pot biryani
+                                            variety
+                                            made with bone-in chicken, whole and ground spices, yogurt, mint leaves and
+                                            basmati rice
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;"
+                                onclick="highlightDiv(this)" />
+                            <h3 style="display: inline;">Gongura Mutton Pulao</h3>
+                            <div class="price">&#x20B9;489</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\OneDrive\Pictures\Screenshots\Prawnsfry.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Prawns fry is a dish of stir fried shrimp with onions, spices and herbs. It
+                                            is
+                                            super quick to make under 20 mins and tastes delicious.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- <Appetizer -->
+    <section id="appetizer">
+        <div class="menu-section">
+            <h2>Appetizer</h2>
+            <form action="/submit-menu" method="post">
+                <div class="row">
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Spring rolls</h3>
+                            <div class="price">&#x20B9;420</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\Documents\Madhuram kitchen\Springrolls.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>The perfect vegetable spring roll is a tantalizing fusion of fresh, crunchy
+                                            vegetables, aromatic seasoning, and a delicate, crispy wrapper.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="salmon" name="dishes" value="salmon" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Chicken Majestic</h3>
+                            <div class="price">&#x20B9;345</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\Documents\Madhuram kitchen\chicken majestic.png"
+                                            alt="Baked Salmon">
+                                    </td>
+                                    <td>
+                                        <p>Chicken Majestic is a delicious appetizer that is most commonly served at
+                                            parties as a chicken starter. Deep-fried chicken strips tossed in yogurt
+                                            sauce.</p>
+                                    </td>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Chilli Chicken</h3>
+                            <div class="price">&#x20B9;345</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\Documents\Madhuram kitchen\chillichicken.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p> Chilli chicken is a popular Indo-chinese appetizer made by tossing fried
+                                            chicken in spicy hot chilli sauce. Learn to make the best at home.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Paneer65</h3>
+                            <div class="price">&#x20B9;315</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\Documents\Madhuram kitchen\paneer65.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Paneer 65 Fry is a spicy South Indian appetizer made with Paneer aka Indian
+                                            cheese, flour, spices and herbs like curry leaves.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Crispy Corn</h3>
+                            <div class="price">&#x20B9;295</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\Documents\Madhuram kitchen\crispy corn.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Crispy corn is a spiced snack made by frying sweet corn kernels. It makes for
+                                            a great party or tea time snack .
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="dish col-md-6">
+                        <div class="dish-details">
+                            <input type="checkbox" id="steak" name="dishes" value="steak" style="margin-left: 0px;" />
+                            <h3 style="display: inline;">Loose Prawns</h3>
+                            <div class="price">&#x20B9;395</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img style="display: block;"
+                                            src="C:\Users\sowja\Documents\Madhuram kitchen\loose prawns.png"
+                                            alt="Grilled Steak">
+                                    </td>
+                                    <td>
+                                        <p>Loose chilli prawns are crispy and spicy snacks made with batter coated prawn
+                                            which is deep-fried.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- dessert -->
+    <section id="Dessert">
+        <div style="margin-left: 4rem; width: 90%;">
+            <h1>Dessert Menu</h1>
+            <div class="row">
+                <div class="dessert-item col-md-5">
+                    <!-- <img src="C:\Users\sowja\Documents\Madhuram kitchen\apricotdelight.png" alt="Dessert 1"> -->
+                    <div class="details row">
+                        <div class="col-md-10">
+                            <div class="name-price">
+                                <h2>Apricot Delight</h2>
+                                <span class="dotted-line"></span>
+                            </div>
+                            <p>Glorified Indian Dessert that is made with fresh tender apricots and full cream milk
+                                with
+                                layers
+                                of sweetness.</p>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="price-button">
+                                <span class="price">&#x20B9;160</span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" style="padding: 2px 4px;"
+                                onclick="toggleSelect(this)">Select</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="dessert-item col-md-5">
+                    <!-- <img src="C:\Users\sowja\Documents\Madhuram kitchen\qubani ka meetha.png" alt="Dessert 2"> -->
+                    <div class="details">
+                        <div class="name-price">
+                            <h2>Qubani ka Meetha</h2>
+                            <span class="dotted-line"></span>
+                        </div>
+                        <p>Qubani ka Meetha also known as Khubani ka meetha is a popular sweet dish from Hyderabadi
+                            cuisine
+                            made from dried apricots, sugar and nuts.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="price-button">
+                            <span class="price">&#x20B9;180</span>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-danger" style="padding: 2px 4px;"
+                            onclick="toggleSelect(this)">Select</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="dessert-item col-md-5">
+                    <!-- <img src="C:\Users\sowja\Documents\Madhuram kitchen\gulab jamun.png" alt="Dessert 3"> -->
+                    <div class="details row">
+                        <div class="col-md-10">
+                            <div class="name-price">
+                                <h2>Gulab Jamun</h2>
+                                <span class="dotted-line"></span>
+                            </div>
+                            <p>Gulab jamun is an Indian dessert of fried dough balls that are soaked in a sweet, sticky
+                                sugar syrup.
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="price-button">
+                                <span class="price">&#x20B9;250</span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" style="padding:2px 4px;"
+                                onclick="toggleSelect(this)">Select</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="dessert-item col-md-5">
+                    <!-- <img src="C:\Users\sowja\Documents\Madhuram kitchen\double ka meetha.png" alt="Dessert 4"> -->
+                    <div class="details row">
+                        <div class="col-md-10">
+                        <div class="name-price">
+                            <h2>Double ka meetha</h2>
+                            <span class="dotted-line"></span>
+                        </div>
+                        <p>Double ka meetha is a dessert of Hyderabad. It is popular in Hyderabadi cuisine, served at
+                            weddings and parties. </p>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="price-button">
+                                <span class="price">&#x20B9;300</span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" style="padding: 2px 4px;"
+                                onclick="toggleSelect(this)">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dessert-item">
+                <img src="C:\Users\sowja\Documents\Madhuram kitchen\kunafa.png" alt="Dessert 5">
+                <div class="details">
+                    <h2>Kunafa</h2>
+                    <p>&#x20B9;330</p>
+                    <p>A luscious, crunchy, and buttery shredded fillo (phyllo) enclosing the most creamy silky milk
+                        pudding and drizzled with fragrant simple syrup. </p>
+                    <button class="select-btn" onclick="toggleSelect(this)">Select</button>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="submitSelection()">Submit</button>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials bg-light">
+        <div class="container text-center">
+            <h2 class="orange-text">Testimonials</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>"The food was amazing and the service was impeccable. Highly recommend!"</p>
+                    <p>- Happy Customer</p>
+                </div>
+                <div class="col-md-4">
+                    <p>"Our corporate event was a success thanks to their professional catering."</p>
+                    <p>- Satisfied Client</p>
+                </div>
+                <div class="col-md-4">
+                    <p>"Delicious food and beautiful presentation. Perfect for our wedding."</p>
+                    <p>- Newlyweds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="contact" class="call-to-action">
+        <div class="container text-center">
+            <h2 class="orange-text">Ready to Plan Your Event?</h2>
+            <p>Contact us today to get started on planning your unforgettable event with our catering services.</p>
+            <a href="#contact" class="btn btn-orange btn-lg">Get a Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-3 text-center">
+        <div class="container">
+            <p>© 2024 Catering Service. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function toggleSelect(button) {
+            if (button.classList.contains('btn-outline-success')) {
+                button.classList.remove('btn-outline-success');
+                button.classList.add('btn-outline-danger');
+                button.textContent = 'Select';
+            } else {
+                button.classList.add('btn-outline-success');
+                button.classList.remove('btn-outline-danger');
+                button.textContent = 'Selected';
+            }
+        }
+
+        function submitSelection() {
+            const selectedItems = document.querySelectorAll('.selected');
+            let message = 'Selected Desserts:\n';
+
+            selectedItems.forEach(item => {
+                const dessertName = item.parentElement.querySelector('h2').textContent;
+                message += `- ${dessertName}\n`;
+            });
+
+            if (selectedItems.length === 0) {
+                alert('No desserts selected.');
+            } else {
+                alert(message);
+            }
+        }
+        function highlightDiv(checkbox) {
+            const div = checkbox.closest('.dish-details');
+            if (checkbox.checked) {
+                div.classList.add('highlighted');
+            } else {
+                div.classList.remove('highlighted');
+            }
+        }
+    </script>
+</body>
+
+</html>
