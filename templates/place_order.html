@@ -1,14 +1,21 @@
-<!-- place_order.html -->
-<h2>Place Order</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Confirm Order</button>
-</form>
-<h3>Selected Items:</h3>
-<ul>
-    {% for item in menu_items %}
-    <li>{{ item.title }} - ${{ item.price }}</li>
-    {% endfor %}
-</ul>
-<p>Total Price: ${{ total_price }}</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Place Order</title>
+</head>
+<body>
+    <h2>Enter Customer Details</h2>
+    <form method="post" action="{% url 'place_order' %}">
+        {% csrf_token %}
+        <div>
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name" name="customer_name" required>
+        </div>
+        <div>
+            <label for="phone_number">Mobile Number:</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+        </div>
+        <button type="submit">Review Order</button>
+    </form>
+</body>
+</html>

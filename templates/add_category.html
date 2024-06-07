@@ -1,11 +1,14 @@
-<!-- add_category.html -->
 <h2>Add Category</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" name="add">Add Category</button>
+    <button type="submit" name="add_category">Add Category</button>
     <button type="submit" name="add_another_category">Add Another Category</button>
-    <button type="submit" name="fetch">getmenu items</button>
-    
-
 </form>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
