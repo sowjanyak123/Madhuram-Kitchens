@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Review</title>
+</head>
+<body>
+    <h1>Order Review</h1>
+    <p>Customer Name: {{ customer_name }}</p>
+    <p>Mobile Number: {{ phone_number }}</p>
+    <p>You ordered the following items:</p>
+    <ul>
+        {% for item in order_items %}
+            <li>{{ item.menu_item_title }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+    <form method="post" action="{% url 'order_review' %}">
+        {% csrf_token %}
+        <button type="submit">Confirm Order</button>
+    </form>
+</body>
+</html>

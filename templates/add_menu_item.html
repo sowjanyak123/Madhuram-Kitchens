@@ -1,8 +1,14 @@
-<!-- add_menu_item.html -->
-<h2>Add Menu Item for {{ category.name }}</h2>
+<h2>Add Menu Item</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" name="add_another">Add Another Item</button>
-    <button type="submit" name="next">Next</button>
+    <button type="submit" name="add_menu_item">Add Menu Item</button>
+    <button type="submit" name="add_another">Add Another Menu Item</button>
 </form>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

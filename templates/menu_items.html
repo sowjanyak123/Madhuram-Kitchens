@@ -1,14 +1,60 @@
-<!-- menu_items.html -->
-<h2>Select Menu Items to Order</h2>
-<form method="post" action="{% url 'place_order' %}">
-    {% csrf_token %}
-    <ul>
-        {% for item in menu_items %}
-        <li>
-            <input type="checkbox" name="menu_items" value="{{ item.id }}">
-            {{ item.title }} - ${{ item.price }}
-        </li>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Items</title>
+    <style>
+        .category {
+            margin-bottom: 20px;
+        }
+        .category h3 {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .menu-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        .menu-item-quantity input[type="number"] {
+            width: 60px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Menu Items</h2>
+    <form method="post" action="{% url 'menu_items' %}">
+        {% csrf_token %}
+        {% for category in categories %}
+        <div class="category">
+            <h3>{{ category.name }}</h3>
+            {% for item in menu_items %}
+                {% if item.category == category %}
+                <div class="menu-item">
+                    <div>
+                        <input type="checkbox" name="menu_items" value="{{ item.id }}">
+                        {{ item.title }} - ${{ item.price }}
+                    </div>
+                    <div class="menu-item-quantity">
+                        Quantity: 
+                        <input type="number" name="quantities" value="1" min="1">
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
         {% endfor %}
-    </ul>
-    <button type="submit">Place Order</button>
-</form>
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>

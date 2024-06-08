@@ -1,11 +1,35 @@
-<!-- add_category.html -->
-<h2>Add Category</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name="add">Add Category</button>
-    <button type="submit" name="add_another_category">Add Another Category</button>
-    <button type="submit" name="fetch">getmenu items</button>
-    
+<!--add category.html-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <link rel="stylesheet" href="{% static 'add_category.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Add Category</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="buttons">
+                <button type="submit" name="add" class="btn add">Add Category</button>
+                <button type="submit" name="add_another_category" class="btn add-another">Add Another Category</button>
+                <button type="submit" name="fetch" class="btn fetch">Get Menu Items</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
-</form>
+    </div>
+</body>
+</html>
